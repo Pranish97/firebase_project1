@@ -15,13 +15,15 @@ export const Navbar = () =>{
     return (
         <div className="navbar">
             <Link to="/" className="home"> Home </Link>
-            <Link to="/login" className="login"> Login </Link>
+            {!user ? (<Link to="/login" className="login"> Login </Link>):
+            (<Link to="/createpost" className="login"> Create Post </Link>
+            )}
 
             <div className="user-list">
                 {user && (
                     <>
                 <p className="user-text">{user?.displayName}</p>
-                <img src={auth.currentUser?.photoURL || "" }  className="user-image" width={60} height={60}/>
+                <img src={auth.currentUser?.photoURL || "" }  className="user-image" width={50} height={50}/>
                 <button className="logout" onClick={signUserOut}>Logout</button>
                 </>
             )}
